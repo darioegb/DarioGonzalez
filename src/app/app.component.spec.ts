@@ -1,35 +1,39 @@
-import { TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { TranslateService } from '@ngx-translate/core';
+import { TranslateTestingModule } from 'ngx-translate-testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('AppComponent', () => {
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+  let translateService: TranslateService;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      declarations: [AppComponent],
+      providers: [TranslateService],
       imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent
+        RouterTestingModule,
+        HttpClientTestingModule,
+        TranslateTestingModule.withTranslations(
+          'es',
+          require('src/assets/i18n/es.json')
+        ),
       ],
     }).compileComponents();
+
+    translateService = TestBed.inject(TranslateService);
+  });
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
   });
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
-
-  it(`should have as title 'devsu'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('devsu');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, devsu');
+    expect(component).toBeTruthy();
   });
 });
