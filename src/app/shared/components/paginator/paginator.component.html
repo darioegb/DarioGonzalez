@@ -1,0 +1,11 @@
+<div class="paginator">
+  <p>{{ totalRecords }} {{'globals.paginator.totalRecordsLabel' | translate}}</p>
+  <div class="button-group">
+    <button (click)="onPrevPage()" [disabled]="currentPage < 2">&#60;</button>
+    <span>{{ currentPage }}</span>
+    <button (click)="onNextPage()" [disabled]="currentPage >= maxPageNumber">&#62;</button>
+  </div>
+  <select [(ngModel)]="pageSize" (change)="onPageSizeChange()">
+    <option *ngFor="let option of pageSizeOptions" [value]="option">{{ option }}</option>
+  </select>
+</div>

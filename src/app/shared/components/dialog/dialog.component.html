@@ -1,0 +1,9 @@
+<div class="dialog">
+  <p>{{ message }}</p>
+  <button (click)="confirm(false)">
+    {{ "globals.buttons.cancel" | translate }}
+  </button>
+  <button class="primary" (click)="confirm(true)">
+    {{ "globals.buttons.confirm" | translate }}
+  </button>
+</div>

@@ -1,0 +1,30 @@
+<section class="product-grid-container">
+  <div class="flex">
+    <app-filter (searchChange)="onSearchChange($event)"></app-filter>
+    <button class="primary" (click)="onAdd()">
+      {{ "globals.buttons.add" | translate }}
+    </button>
+  </div>
+  <ng-container *ngIf="filteredData$ | async as filteredData">
+    <div #dialogContainer></div>
+    <div class="grid">
+      <app-table
+        [columns]="columns"
+        [items]="
+          filteredData
+            | slice : (currentPage - 1) * pageSize : currentPage * pageSize
+        "
+        (edit)="onEditItem($event)"
+        (remove)="onDeleteItem($event)"
+      ></app-table>
+
+      <app-paginator
+        [currentPage]="currentPage"
+        [totalRecords]="filteredData.length"
+        [pageSize]="pageSize"
+        (pageSizeChange)="onPageSizeChange($event)"
+        (pageChange)="onPageChange($event)"
+      ></app-paginator>
+    </div>
+  </ng-container>
+</section>

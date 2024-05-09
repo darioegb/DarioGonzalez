@@ -1,0 +1,46 @@
+@use "variables" as *;
+
+.product-detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-radius: 0.25rem;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 2rem;
+    border-block-start: 1px solid gray;
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    textarea {
+      &.ng-invalid.ng-touched:not(form) {
+        border: 2px solid red;
+      }
+
+      &.ng-invalid.ng-touched:not(form) + small {
+        color: red;
+        display: block;
+        @media (width <= 35rem) {
+          margin-block-end: 0.5rem;
+        }
+      }
+    }
+
+    .button-group {
+      padding-block-start: 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+  }
+}

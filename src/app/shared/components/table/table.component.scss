@@ -1,0 +1,35 @@
+.table-container {
+  max-height: 60vh;
+  overflow-y: auto;
+
+  .table {
+    position: relative;
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.25rem;
+
+    thead {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+
+    th,
+    td {
+      border-block-end: 1px solid #ddd;
+      padding: 1rem;
+      text-align: left;
+      min-width: 6.5rem;
+    }
+
+    th {
+      background-color: #F9FAFC;
+    }
+
+    th:last-child {
+      border-block-end: none;
+    }
+  }
+
+}
+

@@ -1,0 +1,21 @@
+.product-grid-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  div:first-child {
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .grid {
+    overflow: hidden;
+    background-color: white;
+    border-radius: 0.25rem;
+    position: relative;
+    padding: 1rem;
+    @media (width <= 35rem) {
+      max-width: 80vw;
+    }
+  }
+}

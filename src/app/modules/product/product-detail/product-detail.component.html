@@ -1,0 +1,112 @@
+<section class="product-detail">
+  <h1>{{ "products.detail.title" | translate }}</h1>
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col">
+        <label for="id">{{ "products.detail.form.id" | translate }}</label>
+        <input type="text" id="id" formControlName="id" />
+        <ng-container *ngIf="id?.invalid && (id?.dirty || id?.touched)">
+          <small *ngIf="id?.errors?.['required']">{{
+            "validations.required" | translate
+          }}</small>
+          <small *ngIf="id?.errors?.['minlength'] || id?.errors?.['maxlength']">
+            {{
+              "validations.minAndMaxLength" | translate : { min: 3, max: 10 }
+            }}
+          </small>
+          <small *ngIf="id?.errors?.['idNotAvailable']">{{
+            "validations.idNotAvailable" | translate
+          }}</small>
+        </ng-container>
+      </div>
+      <div class="col">
+        <label for="name">{{ "products.detail.form.name" | translate }}</label>
+        <input type="text" id="name" formControlName="name" />
+        <ng-container *ngIf="name?.invalid && (name?.dirty || name?.touched)">
+          <small *ngIf="name?.errors?.['required']">{{
+            "validations.required" | translate
+          }}</small>
+          <small
+            *ngIf="name?.errors?.['minlength'] || name?.errors?.['maxlength']"
+          >
+            {{
+              "validations.minAndMaxLength" | translate : { min: 5, max: 100 }
+            }}
+          </small>
+        </ng-container>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label for="description">{{ "products.detail.form.description" | translate }}</label>
+        <textarea id="description" formControlName="description"></textarea>
+        <ng-container
+          *ngIf="
+            description?.invalid && (description?.dirty || description?.touched)
+          "
+        >
+          <small *ngIf="description?.errors?.['required']">
+            {{ "validations.required" | translate }}
+          </small>
+          <small
+            *ngIf="description?.errors?.['minlength'] || description?.errors?.['maxlength']"
+          >
+            {{
+              "validations.minAndMaxLength" | translate : { min: 10, max: 200 }
+            }}
+          </small>
+        </ng-container>
+      </div>
+      <div class="col">
+        <label for="logo">{{ "products.detail.form.logo" | translate }}</label>
+        <input type="text" id="logo" formControlName="logo" />
+        <ng-container *ngIf="logo?.invalid && (logo?.dirty || logo?.touched)">
+          <small *ngIf="logo?.errors?.['required']">{{
+            "validations.required" | translate
+          }}</small>
+        </ng-container>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label for="date_release">{{ "products.detail.form.dateRelease" | translate }}</label>
+        <input type="date" id="date_release" formControlName="date_release" />
+        <ng-container
+          *ngIf="
+            dateRelease?.invalid && (dateRelease?.dirty || dateRelease?.touched)
+          "
+        >
+          <small *ngIf="dateRelease?.errors?.['required']">
+            {{ "validations.required" | translate }}
+          </small>
+          <small *ngIf="dateRelease?.errors?.['invalidReleaseDate']">
+            {{ "validations.invalidReleaseDate" | translate }}
+          </small>
+        </ng-container>
+      </div>
+      <div class="col">
+        <label for="date_revision">{{ "products.detail.form.dateRevision" | translate }}</label>
+        <input type="date" id="date_revision" formControlName="date_revision" />
+        <ng-container
+          *ngIf="
+            dateRevision?.invalid &&
+            (dateRevision?.dirty || dateRevision?.touched)
+          "
+        >
+          <small *ngIf="dateRevision?.errors?.['required']">
+            {{ "validations.required" | translate }}
+          </small>
+          <small *ngIf="dateRevision?.errors?.['invalidRevisionDate']">
+            {{ "validations.invalidRevisionDate" | translate }}
+          </small>
+        </ng-container>
+      </div>
+    </div>
+    <div class="button-group">
+      <button type="reset" [disabled]="isEdit">{{ "globals.buttons.reset" | translate }}</button>
+      <button class="primary" type="submit" [disabled]="!productForm.valid">
+        {{ "globals.buttons.save" | translate }}
+      </button>
+    </div>
+  </form>
+</section>

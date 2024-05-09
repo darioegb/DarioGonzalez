@@ -1,0 +1,57 @@
+<div class="table-container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th *ngFor="let column of columns">{{ column.name | translate }}</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngIf="items.length > 0; else emptyTable">
+        <tr *ngFor="let item of items; index as i">
+          <td *ngFor="let column of columns">
+            <ng-container [ngSwitch]="column.type">
+              <ng-container *ngSwitchCase="'date'">
+                {{ item[column.key] | date : "dd/MM/yyyy" }}
+              </ng-container>
+              <ng-container *ngSwitchCase="'image'">
+                <img
+                  class="avatar"
+                  loading="lazy"
+                  [src]="item[column.key]"
+                  alt="picture"
+                />
+              </ng-container>
+              <ng-container *ngSwitchDefault>
+                {{ item[column.key] }}
+              </ng-container>
+            </ng-container>
+          </td>
+          <td>
+            <app-dropdown>
+              <li>
+                <a (click)="onEditItem(item, i)">{{
+                  "globals.buttons.edit" | translate
+                }}</a>
+              </li>
+              <li>
+                <a (click)="onDeleteItem(item, i)">{{
+                  "globals.buttons.delete" | translate
+                }}</a>
+              </li>
+            </app-dropdown>
+          </td>
+        </tr>
+      </ng-container>
+      <ng-template #emptyTable>
+        <tr>
+          <td>
+            <app-empty-table
+              [message]="'globals.grid.itemsNotFound' | translate"
+            ></app-empty-table>
+          </td>
+        </tr>
+      </ng-template>
+    </tbody>
+  </table>
+</div>

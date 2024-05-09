@@ -1,0 +1,81 @@
+{
+  "products": {
+    "grid": {
+      "filterInput": {
+        "placeholder": "Search..."
+      },
+      "columns": {
+        "name": "Nombre",
+        "description": "Descripción",
+        "logo": "Logo",
+        "dateRelease": "Fecha de liberación",
+        "dateRevision": "Fecha de reestructuración"
+      }
+    },
+    "detail": {
+      "title": "Formulario de Registro",
+      "form": {
+        "id": "ID",
+        "name": "Nombre",
+        "description": "Descripción",
+        "logo":"Logo",
+        "dateRelease": "Fecha Liberación",
+        "dateRevision": "Fecha Revisión"
+      }
+    }
+  },
+  "pageNotFound": {
+    "title": "404",
+    "subtitle": "Ups. Nada por aquí..."
+  },
+  "globals": {
+    "title": "BANCO",
+    "grid": {
+      "itemsNotFound": "No se encontraron items"
+    },
+    "paginator": {
+      "totalRecordsLabel": "Resutados",
+      "nextPageLabel": "Siguiente Pagina",
+      "previousPageLabel": "Pagina Anterior",
+      "firstPageLabel": "Primera Pagina",
+      "lastPageLabel": "Ultima Pagina"
+    },
+    "buttons": {
+      "add": "Agregar",
+      "confirm": "Confirmar",
+      "cancel": "Cancelar",
+      "save": "Guardar",
+      "edit": "Editar",
+      "delete": "Borrar",
+      "reset": "Limpiar",
+      "backHome": "Ir a inicio"
+    },
+    "dialogs": {
+      "delete": {
+        "title": "¿Esta seguro que desea eliminar el producto {{value}}?"
+      }
+    },
+    "toasts": {
+      "add": {
+        "success": "{{value}} se agregó con éxito",
+        "error": "Ocurrió un error al agregar un {{value}}"
+      },
+      "update": {
+        "success": "{{value}} fue actualizado con éxito",
+        "error": "Ocurrió un error al actualizar un {{value}}"
+      },
+      "delete": {
+        "success": "El {{value}} ha sido eliminado exitosamente",
+        "error": "Ocurrió un error al eliminar un {{value}}"
+      }
+    }
+  },
+  "validations": {
+    "required": "El campo es obligatorio.",
+    "minAndMaxLength": "El campo debe tener entre {{min}} y {{max}} caracteres.",
+    "idNotAvailable": "El ID no está disponible.",
+    "invalidReleaseDate": "La fecha de liberación debe ser mayor o igual que la fecha actual.",
+    "invalidRevisionDate": "La fecha de revisión debe ser exactamente un año posterior a la fecha de liberación."
+
+  }
+}
